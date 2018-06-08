@@ -76,8 +76,7 @@ class Model(object):
         img = img.reshape((1, 1, self.IMAGE_SIZE, self.IMAGE_SIZE))
         img = img.astype('float32')
         img = img/255.0
-        result = self.model.predic
-        t_proba(img)  #测算一下该img属于某个label的概率
+        result = self.model.predict_proba(img)  #测算一下该img属于某个label的概率
         max_index = np.argmax(result) #找出概率最高的
 
         return max_index,result[0][max_index] #第一个参数为概率最高的label的index,第二个参数为对应概率
